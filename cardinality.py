@@ -31,7 +31,7 @@ def count(iterable):
 
 def at_least(size, iterable):
     """
-    Determine whether the `iterable` contains at least `size` items.
+    Check whether the `iterable` contains at least `size` items.
     """
     if size < 0:
         raise ValueError("'size' must be positive (or zero)")
@@ -49,7 +49,7 @@ def at_least(size, iterable):
 
 def at_most(size, iterable):
     """
-    Determine whether the `iterable` contains no more than `size` items.
+    Check whether the `iterable` contains no more than `size` items.
     """
     if size < 0:
         raise ValueError("'size' must be positive (or zero)")
@@ -64,7 +64,7 @@ def at_most(size, iterable):
 
 def between(min, max, iterable):
     """
-    Determine whether the `iterable` contains between `min` and `max` items.
+    Check whether the `iterable` contains between `min` and `max` items.
     """
     if min < 0:
         raise ValueError("'min' must be positive (or zero)")
