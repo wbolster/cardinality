@@ -4,22 +4,34 @@ import cardinality
 import pytest
 
 
+def generate(size):
+    """Return a generator on which len() won't work."""
+    for i in range(size):
+        yield i
+
+
 def test_at_least():
 
     assert cardinality.at_least(0, [])
     assert cardinality.at_least(0, [1, 2])
+    assert cardinality.at_least(0, generate(0))
+    assert cardinality.at_least(0, generate(2))
+
     assert cardinality.at_least(2, [1, 2])
     assert not cardinality.at_least(3, [1, 2])
+    assert cardinality.at_least(2, generate(4))
+    assert not cardinality.at_least(2, generate(1))
 
-    assert cardinality.at_least(10, range(10))
 
+def test_at_least_invalid_size():
     with pytest.raises(ValueError) as e:
         cardinality.at_least(-1, [])
     assert 'must be positive' in str(e.value)
 
-    # Must be iterable
+
+def test_at_least_non_iterable():
     with pytest.raises(TypeError) as e:
-        cardinality.at_least(0, 12)
+        cardinality.at_least(0, object())
     assert 'is not iterable' in str(e.value)
 
 
