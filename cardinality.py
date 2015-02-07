@@ -119,7 +119,7 @@ def at_most(size, iterable):
 
 def between(min, max, iterable):
     """
-    Check whether `iterable` yields at least `min` and at most`max` items.
+    Check whether `iterable` yields at least `min` and at most `max` items.
 
     Equivalent to the expression
 
