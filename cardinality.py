@@ -64,7 +64,7 @@ def at_most(size, iterable):
 
 def between(min, max, iterable):
     """
-    Determine whether the `iterable` contains no more than `size` items.
+    Determine whether the `iterable` contains between `min` and `max` items.
     """
     if min < 0:
         raise ValueError("'min' must be positive (or zero)")
