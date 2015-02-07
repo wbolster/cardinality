@@ -78,5 +78,13 @@ def test_invalid_size(func):
 
 def test_between_invalid_range():
     with pytest.raises(ValueError) as e:
+        cardinality.between(-1, 3, [])
+    assert 'must be positive' in str(e.value)
+
+    with pytest.raises(ValueError) as e:
+        cardinality.between(0, -2, [])
+    assert 'must be positive' in str(e.value)
+
+    with pytest.raises(ValueError) as e:
         cardinality.between(12, 3, [])
     assert 'must be greater' in str(e.value)

@@ -68,7 +68,7 @@ def between(min, max, iterable):
     """
     if min < 0:
         raise ValueError("'min' must be positive (or zero)")
-    if min < 0:
+    if max < 0:
         raise ValueError("'max' must be positive (or zero)")
     if min > max:
         raise ValueError("'max' must be greater or equal than 'min'")
