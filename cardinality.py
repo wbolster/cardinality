@@ -10,17 +10,25 @@ def count(iterable):
     """
     Count the number of items that `iterable` yields.
 
-    Like the built-in ``len()``, but works for any iterable::
+    Equivalent to the expression
 
-        >>> count([1, 2, 3])
-        3
-        >>> count(i for i in range(500))
-        500
-        >>> def gen():
-        ...     yield 'hello'
-        ...     yield 'world'
-        >>> count(gen())
-        2
+    ::
+
+      len(iterable)
+
+    … but it also works for iterable that do not support ``len()``.
+
+      >>> import cardinality
+
+      >>> cardinality.count([1, 2, 3])
+      3
+      >>> cardinality.count(i for i in range(500))
+      500
+      >>> def gen():
+      ...     yield 'hello'
+      ...     yield 'world'
+      >>> cardinality.count(gen())
+      2
 
     """
     if hasattr(iterable, '__len__'):
@@ -32,7 +40,30 @@ def count(iterable):
 
 def at_least(size, iterable):
     """
-    Check whether the `iterable` contains at least `size` items.
+    Check whether `iterable` yields at least `size` items.
+
+    Equivalent to the expression
+
+    ::
+
+      cardinality.count(iterable) >= size
+
+    … but more efficient.
+
+    ::
+
+      >>> import cardinality
+
+      >>> cardinality.at_least(3, range(2))
+      False
+      >>> cardinality.at_least(3, range(5))
+      True
+      >>> def gen():
+      ...     yield 'hello'
+      ...     yield 'world'
+      >>> cardinality.at_least(2, gen())
+      True
+
     """
     if size < 0:
         raise ValueError("'size' must be positive (or zero)")
@@ -50,7 +81,30 @@ def at_least(size, iterable):
 
 def at_most(size, iterable):
     """
-    Check whether the `iterable` contains no more than `size` items.
+    Check whether `iterable` yields no more than `size` items.
+
+    Equivalent to the expression
+
+    ::
+
+      cardinality.count(iterable) <= size
+
+    … but more efficient.
+
+    ::
+
+      >>> import cardinality
+
+      >>> cardinality.at_most(3, range(2))
+      True
+      >>> cardinality.at_most(3, range(5))
+      False
+      >>> def gen():
+      ...     yield 'hello'
+      ...     yield 'world'
+      >>> cardinality.at_most(1, gen())
+      False
+
     """
     if size < 0:
         raise ValueError("'size' must be positive (or zero)")
@@ -65,16 +119,29 @@ def at_most(size, iterable):
 
 def between(min, max, iterable):
     """
-    Check whether the `iterable` contains between `min` and `max` items.
+    Check whether `iterable` yields at least `min` and at most`max` items.
 
-    Both `min` and `max` are _inclusive. This function is equivalent to
-    the expression
+    Equivalent to the expression
 
     ::
 
-        min <= cardinality.count(iterable) <= max
+      min <= cardinality.count(iterable) <= max
 
     … but more efficient.
+
+    ::
+
+      >>> import cardinality
+
+      >>> cardinality.between(4, 6, range(5))
+      True
+      >>> cardinality.between(4, 6, range(20))
+      False
+      >>> def gen():
+      ...     yield 'hello'
+      ...     yield 'world'
+      >>> cardinality.between(0, 3, gen())
+      True
 
     """
     if min < 0:
