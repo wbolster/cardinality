@@ -1,3 +1,5 @@
+flake8
+pep8-naming
 pytest
 pytest-cov
-pep8-naming
+pytest-pep8
