@@ -16,7 +16,7 @@ def count(iterable):
 
       len(iterable)
 
-    … but it also works for iterable that do not support ``len()``.
+    … but it also works for iterables that do not support ``len()``.
 
       >>> import cardinality
 
