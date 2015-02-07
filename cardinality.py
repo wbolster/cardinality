@@ -66,4 +66,14 @@ def between(min, max, iterable):
     """
     Determine whether the `iterable` contains no more than `size` items.
     """
-    raise NotImplementedError()
+    if min < 0:
+        raise ValueError("'min' must be positive (or zero)")
+    if min < 0:
+        raise ValueError("'max' must be positive (or zero)")
+    if min > max:
+        raise ValueError("'min' cannot be greater than 'max'")
+
+    if hasattr(iterable, '__len__'):
+        return min <= len(iterable) <= max
+    else:
+        raise NotImplementedError()
