@@ -32,8 +32,10 @@ The API docs below contain usage examples for each function.
 
 .. note::
 
-   Each function (at least partially) consume the iterable that is passed to
-   it, so don't expect the passed iterables to be useful afterwards.
+   Each function creates an iterator for the iterable that is passed to it, and
+   consumes that iterator, but not necessarily until exhaustion. If an argument
+   can be iterated over only once (e.g. generators), do not use the object
+   afterwards.
 
 
 API
