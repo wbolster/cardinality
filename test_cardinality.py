@@ -57,6 +57,12 @@ def test_invalid_size(func):
     assert 'must be positive' in str(e.value)
 
 
+def test_count_non_iterable():
+    with pytest.raises(TypeError) as e:
+        cardinality.count(object())
+    assert 'is not iterable' in str(e.value)
+
+
 @pytest.mark.parametrize("func", [cardinality.at_least, cardinality.at_most])
 def test_non_iterable(func):
     with pytest.raises(TypeError) as e:
