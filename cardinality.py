@@ -71,7 +71,7 @@ def between(min, max, iterable):
     if min < 0:
         raise ValueError("'max' must be positive (or zero)")
     if min > max:
-        raise ValueError("'min' cannot be greater than 'max'")
+        raise ValueError("'max' must be greater or equal than 'min'")
 
     if hasattr(iterable, '__len__'):
         return min <= len(iterable) <= max

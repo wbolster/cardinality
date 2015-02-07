@@ -64,5 +64,6 @@ def test_between():
     assert cardinality.between(1, 1, [1])
     assert cardinality.between(1, 1, [1])
 
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError) as e:
         cardinality.between(12, 3, [])
+    assert 'must be greater' in str(e.value)
