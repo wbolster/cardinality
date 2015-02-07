@@ -3,6 +3,9 @@
 import collections
 import itertools
 
+__version__ = '0.0.1'
+__version_info__ = tuple(map(int, __version__.split('.')))
+
 _SENTINEL = object()
 
 
