@@ -30,6 +30,8 @@ def at_least(size, iterable):
         iter(iterable)
         return True
     else:
+        # Skip first (n - 1) items. If the iterable yields anything
+        # after that, we're good.
         g = itertools.islice(iterable, size - 1, None)
         return next(g, _SENTINEL) is not _SENTINEL
 
@@ -43,6 +45,8 @@ def at_most(size, iterable):
     elif hasattr(iterable, '__len__'):
         return len(iterable) <= size
     else:
+        # Skip first n items. If the iterable doesn't yield anyting
+        # after that, we're good.
         g = itertools.islice(iterable, size, None)
         return next(g, _SENTINEL) is _SENTINEL
 
