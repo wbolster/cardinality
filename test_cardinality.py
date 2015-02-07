@@ -50,13 +50,6 @@ def test_between():
     assert cardinality.between(1, 1, [1])
 
 
-@pytest.mark.parametrize("func", [cardinality.at_least, cardinality.at_most])
-def test_invalid_size(func):
-    with pytest.raises(ValueError) as e:
-        func(-1, [])
-    assert 'must be positive' in str(e.value)
-
-
 def test_count_non_iterable():
     with pytest.raises(TypeError) as e:
         cardinality.count(object())
@@ -74,6 +67,13 @@ def test_between_non_iterable():
     with pytest.raises(TypeError) as e:
         cardinality.between(0, 1, object())
     assert 'is not iterable' in str(e.value)
+
+
+@pytest.mark.parametrize("func", [cardinality.at_least, cardinality.at_most])
+def test_invalid_size(func):
+    with pytest.raises(ValueError) as e:
+        func(-1, [])
+    assert 'must be positive' in str(e.value)
 
 
 def test_between_invalid_range():
