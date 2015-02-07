@@ -165,13 +165,15 @@ def between(min, max, iterable):
     if hasattr(iterable, '__len__'):
         return min <= len(iterable) <= max
 
+    it = iter(iterable)
+
     # Lower bound: consume (min - 1) items, then check whether the
     # iterable yields anything.
     if min > 0:
-        g = itertools.islice(iterable, min - 1, None)
-        if next(g, _SENTINEL) is _SENTINEL:
+        it = itertools.islice(it, min - 1, None)
+        if next(it, _SENTINEL) is _SENTINEL:
             return False  # too few items
 
     # Upper bound: check that the remainder is not too large. The block
     # above consumed exactly "min" items, so at_most() can do the rest.
-    return at_most(max - min, iterable)
+    return at_most(max - min, it)

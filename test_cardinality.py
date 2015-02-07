@@ -10,6 +10,14 @@ def generate(size):
         yield i
 
 
+class RepeatedlyIterable():
+    """Class than can be iterated over more than once"""
+    def __iter__(self):
+        yield 1
+        yield 2
+        yield 3
+
+
 def test_count():
     assert cardinality.count([1, 2]) == 2
     assert cardinality.count(generate(0)) == 0
@@ -58,6 +66,10 @@ def test_between():
     assert cardinality.between(3, 5, generate(5))
     assert not cardinality.between(3, 5, generate(6))
     assert not cardinality.between(3, 5, generate(500))
+
+    assert cardinality.between(1, 3, RepeatedlyIterable())
+    assert cardinality.between(2, 4, RepeatedlyIterable())
+    assert not cardinality.between(4, 6, RepeatedlyIterable())
 
 
 def test_count_non_iterable():
