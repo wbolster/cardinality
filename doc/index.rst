@@ -32,8 +32,8 @@ The API docs below contain usage examples for each function.
 
 .. note::
 
-   These functions (at least partly) consume the iterable that is passed to it,
-   so don't expect the passed iterables to be useful afterwards.
+   Each function (at least partially) consume the iterable that is passed to
+   it, so don't expect the passed iterables to be useful afterwards.
 
 
 API
