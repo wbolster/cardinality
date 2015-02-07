@@ -11,7 +11,7 @@ def test_at_least():
     assert cardinality.at_least(2, [1, 2])
     assert not cardinality.at_least(3, [1, 2])
 
-    assert cardinality.at_least(10, xrange(10))
+    assert cardinality.at_least(10, range(10))
 
     with pytest.raises(ValueError) as e:
         cardinality.at_least(-1, [])
