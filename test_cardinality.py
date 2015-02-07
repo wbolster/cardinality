@@ -26,8 +26,9 @@ def test_at_least():
 
     assert cardinality.at_least(2, [1, 2])
     assert not cardinality.at_least(3, [1, 2])
+    assert cardinality.at_least(1, generate(1))
     assert cardinality.at_least(2, generate(4))
-    assert not cardinality.at_least(2, generate(1))
+    assert not cardinality.at_least(10, generate(2))
 
 
 def test_at_least_invalid_size():
