@@ -20,21 +20,13 @@ Usage
 
 The ``cardinality`` module provides these functions:
 
-:py:func:`cardinality.count()`
+* :py:func:`cardinality.count()`
 
-  Determines the size of an iterable.
+* :py:func:`cardinality.at_least()`
 
-:py:func:`cardinality.at_least()`
+* :py:func:`cardinality.at_most()`
 
-  Checks whether an iterable has a minimum size.
-
-:py:func:`cardinality.at_most()`
-
-  Checks whether an iterable has a maximum size.
-
-:py:func:`cardinality.between()`
-
-  Checks whether an iterable's size is within certain bounds.
+* :py:func:`cardinality.between()`
 
 The API docs below contain usage examples for each function.
 
