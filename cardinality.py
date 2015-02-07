@@ -8,9 +8,10 @@ def at_least(size, iterable):
     """
     Determines whether the `iterable` contains at least `size` items.
     """
-    # TODO: use len()/__len__() if possible
     if size < 0:
         raise ValueError("'size' must be positive (or zero)")
+    elif hasattr(iterable, '__len__'):
+        return len(iterable) >= size
     elif size == 0:
         iter(iterable)
         return True
