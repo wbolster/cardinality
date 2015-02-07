@@ -26,7 +26,7 @@ The ``cardinality`` module provides these functions:
 
 :py:func:`cardinality.at_least()`
 
-  checks whether an iterable has a minimum size
+  Checks whether an iterable has a minimum size.
 
 :py:func:`cardinality.at_most()`
 
