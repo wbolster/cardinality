@@ -30,7 +30,7 @@ def at_least(size, iterable):
         iter(iterable)
         return True
     else:
-        g = itertools.islice(iterable, size - 1, size)
+        g = itertools.islice(iterable, size - 1, None)
         return next(g, _SENTINEL) is not _SENTINEL
 
 
