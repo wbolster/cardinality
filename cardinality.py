@@ -1,3 +1,4 @@
+# coding: UTF-8
 
 import collections
 import itertools
@@ -65,6 +66,16 @@ def at_most(size, iterable):
 def between(min, max, iterable):
     """
     Check whether the `iterable` contains between `min` and `max` items.
+
+    Both `min` and `max` are _inclusive. This function is equivalent to
+    the expression
+
+    ::
+
+        min <= cardinality.count((iterable)) <= max
+
+    … but more efficient.
+
     """
     if min < 0:
         raise ValueError("'min' must be positive (or zero)")
