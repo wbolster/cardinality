@@ -9,7 +9,18 @@ def count(iterable):
     """
     Count the number of items that `iterable` yields.
 
-    Like the built-in ``len()``, but works for any iterable.
+    Like the built-in ``len()``, but works for any iterable::
+
+        >>> count([1, 2, 3])
+        3
+        >>> count(i for i in range(500))
+        500
+        >>> def gen():
+        ...     yield 'hello'
+        ...     yield 'world'
+        >>> count(gen())
+        2
+
     """
     if hasattr(iterable, '__len__'):
         return len(iterable)
