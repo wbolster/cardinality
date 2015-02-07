@@ -3,6 +3,7 @@
 __pycache__/
 
 # Testing
+/.cache/
 /.coverage
 /.tox/
 /htmlcov/
@@ -10,3 +11,6 @@ __pycache__/
 # Packaging
 /*.egg-info/
 /dist/
+
+# Documentation
+/doc/build/
