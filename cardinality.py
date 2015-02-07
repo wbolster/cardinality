@@ -1,7 +1,21 @@
 
+import collections
 import itertools
 
 _SENTINEL = object()
+
+
+def count(iterable):
+    """
+    Count the number of items that `iterable` yields.
+
+    Like the built-in ``len()``, but works for any iterable.
+    """
+    if hasattr(iterable, '__len__'):
+        return len(iterable)
+
+    d = collections.deque(enumerate(iterable, 1), maxlen=1)
+    return d[0][0] if d else 0
 
 
 def at_least(size, iterable):

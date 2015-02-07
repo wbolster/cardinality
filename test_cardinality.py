@@ -10,6 +10,13 @@ def generate(size):
         yield i
 
 
+def test_count():
+    assert cardinality.count([1, 2]) == 2
+    assert cardinality.count(generate(0)) == 0
+    assert cardinality.count(generate(3)) == 3
+    assert cardinality.count(dict()) == 0
+
+
 def test_at_least():
 
     assert cardinality.at_least(0, [])
