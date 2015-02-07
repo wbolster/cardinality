@@ -38,7 +38,13 @@ def at_most(size, iterable):
     """
     Determines whether the `iterable` contains no more than `size` items.
     """
-    raise NotImplementedError()
+    if size < 0:
+        raise ValueError("'size' must be positive (or zero)")
+    elif hasattr(iterable, '__len__'):
+        return len(iterable) <= size
+    else:
+        g = itertools.islice(iterable, size, None)
+        return next(g, _SENTINEL) is _SENTINEL
 
 
 def between(min, max, iterable):

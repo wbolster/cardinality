@@ -43,9 +43,18 @@ def test_at_least_non_iterable():
 
 
 def test_at_most():
+    assert cardinality.at_most(0, [])
+    assert not cardinality.at_most(0, [1])
     assert cardinality.at_most(2, [1])
     assert cardinality.at_most(2, [1, 2])
     assert not cardinality.at_most(2, [1, 2, 3])
+
+    assert cardinality.at_most(0, generate(0))
+    assert cardinality.at_most(1, generate(0))
+    assert cardinality.at_most(1, generate(1))
+    assert cardinality.at_most(20, generate(10))
+    assert cardinality.at_most(3, generate(3))
+    assert not cardinality.at_most(2, generate(10))
 
 
 def test_between():
