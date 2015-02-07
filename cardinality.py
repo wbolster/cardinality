@@ -34,7 +34,6 @@ def count(iterable):
     … but it also works for iterables that do not support ``len()``.
 
       >>> import cardinality
-
       >>> cardinality.count([1, 2, 3])
       3
       >>> cardinality.count(i for i in range(500))
@@ -68,7 +67,6 @@ def at_least(size, iterable):
     ::
 
       >>> import cardinality
-
       >>> cardinality.at_least(3, range(2))
       False
       >>> cardinality.at_least(3, range(5))
@@ -109,7 +107,6 @@ def at_most(size, iterable):
     ::
 
       >>> import cardinality
-
       >>> cardinality.at_most(3, range(2))
       True
       >>> cardinality.at_most(3, range(5))
@@ -147,7 +144,6 @@ def between(min, max, iterable):
     ::
 
       >>> import cardinality
-
       >>> cardinality.between(4, 6, range(5))
       True
       >>> cardinality.between(4, 6, range(20))
