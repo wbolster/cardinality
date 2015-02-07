@@ -72,7 +72,7 @@ def between(min, max, iterable):
 
     ::
 
-        min <= cardinality.count((iterable)) <= max
+        min <= cardinality.count(iterable) <= max
 
     … but more efficient.
 
