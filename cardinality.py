@@ -1,5 +1,9 @@
 # coding: UTF-8
 
+"""
+cardinality: determine and check the size of any iterable
+"""
+
 import collections
 import itertools
 
