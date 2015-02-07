@@ -36,6 +36,7 @@ def test_at_most():
     assert cardinality.at_most(2, [1, 2])
     assert not cardinality.at_most(2, [1, 2, 3])
     assert cardinality.at_most(0, generate(0))
+    assert not cardinality.at_most(0, generate(1))
     assert cardinality.at_most(1, generate(0))
     assert cardinality.at_most(1, generate(1))
     assert cardinality.at_most(20, generate(10))
@@ -48,6 +49,15 @@ def test_between():
     assert cardinality.between(0, 2, [1])
     assert cardinality.between(1, 1, [1])
     assert cardinality.between(1, 1, [1])
+    assert cardinality.between(0, 0, generate(0))
+    assert cardinality.between(0, 1, generate(0))
+    assert cardinality.between(1, 1, generate(1))
+    assert not cardinality.between(3, 5, generate(2))
+    assert cardinality.between(3, 5, generate(3))
+    assert cardinality.between(3, 5, generate(4))
+    assert cardinality.between(3, 5, generate(5))
+    assert not cardinality.between(3, 5, generate(6))
+    assert not cardinality.between(3, 5, generate(500))
 
 
 def test_count_non_iterable():
