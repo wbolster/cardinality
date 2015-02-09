@@ -56,7 +56,7 @@ def test_between():
     assert cardinality.between(0, 1, [1])
     assert cardinality.between(0, 2, [1])
     assert cardinality.between(1, 1, [1])
-    assert cardinality.between(1, 1, [1])
+    assert cardinality.between(1, 2, [1])
     assert cardinality.between(0, 0, generate(0))
     assert cardinality.between(0, 1, generate(0))
     assert cardinality.between(1, 1, generate(1))
