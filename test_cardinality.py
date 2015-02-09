@@ -11,7 +11,7 @@ def generate(size):
 
 
 class RepeatedlyIterable():
-    """Class than can be iterated over more than once"""
+    """Class that can be iterated over more than once"""
     def __iter__(self):
         yield 1
         yield 2
